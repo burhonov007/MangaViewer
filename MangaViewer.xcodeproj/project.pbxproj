@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		1C98903B2C7DC04E009907BF /* MangaViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */; };
-		1C98903D2C7DC04E009907BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98903C2C7DC04E009907BF /* ContentView.swift */; };
 		1C98903F2C7DC050009907BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C98903E2C7DC050009907BF /* Assets.xcassets */; };
 		1C9890422C7DC050009907BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9890412C7DC050009907BF /* Preview Assets.xcassets */; };
+		1C9890492C7DC06C009907BF /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890482C7DC06C009907BF /* TabbarView.swift */; };
+		1C98904B2C7DC2AA009907BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98904A2C7DC2AA009907BF /* MainView.swift */; };
+		1C98904D2C7DC2B4009907BF /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98904C2C7DC2B4009907BF /* HistoryView.swift */; };
+		1C98904F2C7DC2E2009907BF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98904E2C7DC2E2009907BF /* SettingsView.swift */; };
+		1C9890512C7DC549009907BF /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890502C7DC549009907BF /* FavoritesView.swift */; };
+		1C9890532C7DCD7A009907BF /* MangaViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890522C7DCD7A009907BF /* MangaViewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C9890372C7DC04E009907BF /* MangaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaViewerApp.swift; sourceTree = "<group>"; };
-		1C98903C2C7DC04E009907BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C98903E2C7DC050009907BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C9890412C7DC050009907BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1C9890482C7DC06C009907BF /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		1C98904A2C7DC2AA009907BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1C98904C2C7DC2B4009907BF /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		1C98904E2C7DC2E2009907BF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1C9890502C7DC549009907BF /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		1C9890522C7DCD7A009907BF /* MangaViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaViewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +62,14 @@
 			isa = PBXGroup;
 			children = (
 				1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */,
-				1C98903C2C7DC04E009907BF /* ContentView.swift */,
+				1C9890482C7DC06C009907BF /* TabbarView.swift */,
+				1C98904A2C7DC2AA009907BF /* MainView.swift */,
+				1C98904C2C7DC2B4009907BF /* HistoryView.swift */,
+				1C98904E2C7DC2E2009907BF /* SettingsView.swift */,
+				1C9890502C7DC549009907BF /* FavoritesView.swift */,
 				1C98903E2C7DC050009907BF /* Assets.xcassets */,
 				1C9890402C7DC050009907BF /* Preview Content */,
+				1C9890522C7DCD7A009907BF /* MangaViewer.swift */,
 			);
 			path = MangaViewer;
 			sourceTree = "<group>";
@@ -137,7 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C98903D2C7DC04E009907BF /* ContentView.swift in Sources */,
+				1C98904F2C7DC2E2009907BF /* SettingsView.swift in Sources */,
+				1C9890492C7DC06C009907BF /* TabbarView.swift in Sources */,
+				1C9890512C7DC549009907BF /* FavoritesView.swift in Sources */,
+				1C98904D2C7DC2B4009907BF /* HistoryView.swift in Sources */,
+				1C9890532C7DCD7A009907BF /* MangaViewer.swift in Sources */,
+				1C98904B2C7DC2AA009907BF /* MainView.swift in Sources */,
 				1C98903B2C7DC04E009907BF /* MangaViewerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +217,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -280,6 +300,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +330,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
