@@ -22,6 +22,7 @@
 		1C9890632C7DE3F1009907BF /* MangaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890622C7DE3F1009907BF /* MangaList.swift */; };
 		1C9890652C7DE574009907BF /* SmallMangaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890642C7DE574009907BF /* SmallMangaRow.swift */; };
 		1C9890682C7DE8B2009907BF /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890672C7DE8B2009907BF /* HistoryRow.swift */; };
+		1C98906A2C7DF74F009907BF /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890692C7DF74F009907BF /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		1C9890622C7DE3F1009907BF /* MangaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaList.swift; sourceTree = "<group>"; };
 		1C9890642C7DE574009907BF /* SmallMangaRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMangaRow.swift; sourceTree = "<group>"; };
 		1C9890672C7DE8B2009907BF /* HistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRow.swift; sourceTree = "<group>"; };
+		1C9890692C7DF74F009907BF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				1C9890572C7DDBB0009907BF /* Favorites */,
 				1C9890582C7DDBC0009907BF /* Settings */,
 				1C9890592C7DDBD3009907BF /* Viewer */,
+				1C9890692C7DF74F009907BF /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				1C9890652C7DE574009907BF /* SmallMangaRow.swift in Sources */,
 				1C9890492C7DC06C009907BF /* TabbarView.swift in Sources */,
 				1C9890512C7DC549009907BF /* FavoritesView.swift in Sources */,
+				1C98906A2C7DF74F009907BF /* SplashScreenView.swift in Sources */,
 				1C98904D2C7DC2B4009907BF /* HistoryView.swift in Sources */,
 				1C98905C2C7DDBFC009907BF /* MangaCollectionCell.swift in Sources */,
 				1C9890632C7DE3F1009907BF /* MangaList.swift in Sources */,
