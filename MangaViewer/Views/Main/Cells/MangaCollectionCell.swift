@@ -1,12 +1,11 @@
 //
-//  MainView.swift
+//  MangaCollectionCell.swift
 //  MangaViewer
 //
 //  Created by itserviceimac on 27/08/24.
 //
 
 import SwiftUI
-
 
 struct MangaCollectionCell: View {
     var index: Int
@@ -70,56 +69,7 @@ struct MangaCollectionCell: View {
     }
 }
 
-struct MangaCollectionView: View {
-    
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
-    var body: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(0..<8) { index in
-                NavigationLink {
-                    MangaViewer()
-                } label: {
-                    MangaCollectionCell(index: index)
-                }
-            }
-            
-        }
-        .padding()
-    }
-}
-
-
-struct MainView: View {
-    var body: some View {
-        ScrollView(.vertical) {
-            MangaCollectionView()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Все книги")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("", systemImage: "list.bullet.indent") {
-                    print("filter tapped")
-                }
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("", systemImage: "magnifyingglass") {
-                    print("search tapped")
-                }
-            }
-            
-        }
-    }
-}
-
 #Preview {
-    NavigationView {
-        TabbarView()
-    }
+    MangaCollectionCell(index: 1)
+        .frame(width: 130, height: 200)
 }
