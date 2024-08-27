@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct MangaViewerApp: App {
     
+    @State private var showSplash = true
     init() {
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
@@ -22,7 +23,22 @@ struct MangaViewerApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                TabbarView()
+                ZStack {
+                    if showSplash {
+                        LottieView(animationFileName: "Loading.json", loopMode: .loop)
+                            .frame(width: 10, height: 10, alignment: .center)
+                            .transition(.opacity)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    withAnimation {
+                                        showSplash = false
+                                    }
+                                }
+                            }
+                    } else {
+                            TabbarView()
+                    }
+                }
             }
         }
     }

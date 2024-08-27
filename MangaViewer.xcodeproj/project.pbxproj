@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C6C02502C7DFB090023F1C0 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C6C024F2C7DFB090023F1C0 /* Loading.json */; };
 		1C98903B2C7DC04E009907BF /* MangaViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */; };
 		1C98903F2C7DC050009907BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C98903E2C7DC050009907BF /* Assets.xcassets */; };
 		1C9890422C7DC050009907BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9890412C7DC050009907BF /* Preview Assets.xcassets */; };
@@ -22,10 +23,12 @@
 		1C9890632C7DE3F1009907BF /* MangaList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890622C7DE3F1009907BF /* MangaList.swift */; };
 		1C9890652C7DE574009907BF /* SmallMangaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890642C7DE574009907BF /* SmallMangaRow.swift */; };
 		1C9890682C7DE8B2009907BF /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890672C7DE8B2009907BF /* HistoryRow.swift */; };
-		1C98906A2C7DF74F009907BF /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890692C7DF74F009907BF /* SplashScreenView.swift */; };
+		1C98906A2C7DF74F009907BF /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9890692C7DF74F009907BF /* LottieView.swift */; };
+		9592CDB1D4EB92440EC51607 /* Pods_MangaViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F240047D05F7AE1DED4F71 /* Pods_MangaViewer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C6C024F2C7DFB090023F1C0 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		1C9890372C7DC04E009907BF /* MangaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaViewerApp.swift; sourceTree = "<group>"; };
 		1C98903E2C7DC050009907BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +45,10 @@
 		1C9890622C7DE3F1009907BF /* MangaList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaList.swift; sourceTree = "<group>"; };
 		1C9890642C7DE574009907BF /* SmallMangaRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMangaRow.swift; sourceTree = "<group>"; };
 		1C9890672C7DE8B2009907BF /* HistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRow.swift; sourceTree = "<group>"; };
-		1C9890692C7DF74F009907BF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		1C9890692C7DF74F009907BF /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		7E61CDCEF0E9749A60F6F5AB /* Pods-MangaViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MangaViewer.debug.xcconfig"; path = "Target Support Files/Pods-MangaViewer/Pods-MangaViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		84F240047D05F7AE1DED4F71 /* Pods_MangaViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MangaViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8EC0906F5DDBBCF914A0ED /* Pods-MangaViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MangaViewer.release.xcconfig"; path = "Target Support Files/Pods-MangaViewer/Pods-MangaViewer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,17 +56,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9592CDB1D4EB92440EC51607 /* Pods_MangaViewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C6C024E2C7DFB010023F1C0 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1C6C024F2C7DFB090023F1C0 /* Loading.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		1C923EA1C7D497D5BEDE3372 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E61CDCEF0E9749A60F6F5AB /* Pods-MangaViewer.debug.xcconfig */,
+				9B8EC0906F5DDBBCF914A0ED /* Pods-MangaViewer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		1C98902E2C7DC04E009907BF = {
 			isa = PBXGroup;
 			children = (
 				1C9890392C7DC04E009907BF /* MangaViewer */,
 				1C9890382C7DC04E009907BF /* Products */,
+				1C923EA1C7D497D5BEDE3372 /* Pods */,
+				F2C9154E2A723965DF3A5469 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +101,7 @@
 		1C9890392C7DC04E009907BF /* MangaViewer */ = {
 			isa = PBXGroup;
 			children = (
+				1C6C024E2C7DFB010023F1C0 /* Animation */,
 				1C9890542C7DDB6D009907BF /* Views */,
 				1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */,
 				1C9890482C7DC06C009907BF /* TabbarView.swift */,
@@ -100,7 +127,7 @@
 				1C9890572C7DDBB0009907BF /* Favorites */,
 				1C9890582C7DDBC0009907BF /* Settings */,
 				1C9890592C7DDBD3009907BF /* Viewer */,
-				1C9890692C7DF74F009907BF /* SplashScreenView.swift */,
+				1C9890692C7DF74F009907BF /* LottieView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +202,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F2C9154E2A723965DF3A5469 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84F240047D05F7AE1DED4F71 /* Pods_MangaViewer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,9 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C9890452C7DC050009907BF /* Build configuration list for PBXNativeTarget "MangaViewer" */;
 			buildPhases = (
+				3534296BA49C57C187A3FBBA /* [CP] Check Pods Manifest.lock */,
 				1C9890332C7DC04E009907BF /* Sources */,
 				1C9890342C7DC04E009907BF /* Frameworks */,
 				1C9890352C7DC04E009907BF /* Resources */,
+				F6A906C50BEB6C71A1F25DAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,10 +272,53 @@
 			files = (
 				1C9890422C7DC050009907BF /* Preview Assets.xcassets in Resources */,
 				1C98903F2C7DC050009907BF /* Assets.xcassets in Resources */,
+				1C6C02502C7DFB090023F1C0 /* Loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3534296BA49C57C187A3FBBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MangaViewer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A906C50BEB6C71A1F25DAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MangaViewer/Pods-MangaViewer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MangaViewer/Pods-MangaViewer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MangaViewer/Pods-MangaViewer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1C9890332C7DC04E009907BF /* Sources */ = {
@@ -252,7 +332,7 @@
 				1C9890652C7DE574009907BF /* SmallMangaRow.swift in Sources */,
 				1C9890492C7DC06C009907BF /* TabbarView.swift in Sources */,
 				1C9890512C7DC549009907BF /* FavoritesView.swift in Sources */,
-				1C98906A2C7DF74F009907BF /* SplashScreenView.swift in Sources */,
+				1C98906A2C7DF74F009907BF /* LottieView.swift in Sources */,
 				1C98904D2C7DC2B4009907BF /* HistoryView.swift in Sources */,
 				1C98905C2C7DDBFC009907BF /* MangaCollectionCell.swift in Sources */,
 				1C9890632C7DE3F1009907BF /* MangaList.swift in Sources */,
@@ -302,7 +382,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -365,7 +445,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -386,6 +466,7 @@
 		};
 		1C9890462C7DC050009907BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E61CDCEF0E9749A60F6F5AB /* Pods-MangaViewer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -416,6 +497,7 @@
 		};
 		1C9890472C7DC050009907BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B8EC0906F5DDBBCF914A0ED /* Pods-MangaViewer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
