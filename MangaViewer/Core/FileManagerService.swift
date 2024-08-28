@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Zip
 
 
 class FileManagerService {
@@ -86,7 +87,7 @@ class FileManagerService {
     }
     
     func getApplicationDirectory(named name: String) -> URL? {
-        guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
         return documentsURL.appendingPathComponent(name)
@@ -100,6 +101,26 @@ class FileManagerService {
             } catch {
                 print("Failed to create directory: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func unZip(at url: URL) {
+        do {
+            guard let appDirectoryURL = getApplicationDirectory(named: url.deletingPathExtension().lastPathComponent.removingPercentEncoding ?? url.lastPathComponent) else {
+                return
+            }
+                
+            createDirectoryIfNeeded(at: appDirectoryURL)
+            
+            print("\(appDirectoryURL)")
+            try Zip.unzipFile(url, destination: appDirectoryURL, overwrite: true, password: nil) { progress in
+                print(progress)
+            } fileOutputHandler: { unzippedFile in
+                print("\(unzippedFile)")
+            }
+        }
+        catch {
+          print("Something went wrong")
         }
     }
     

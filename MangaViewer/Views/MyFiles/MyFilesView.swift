@@ -99,6 +99,15 @@ struct MyFilesView: View {
             }) {
                 Label("Удалить", systemImage: "trash")
             }
+            
+            if item.fileType == .zip {
+                Button(action: {
+                    FileManagerService.shared.unZip(at: item.url)
+                }) {
+                    Label("Распаковать", systemImage: "archivebox")
+                }
+            }
+            
         }
     }
     

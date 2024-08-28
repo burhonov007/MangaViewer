@@ -44,6 +44,7 @@ struct File: Identifiable, Hashable {
         switch fileType {
         case .mp3: return .mp3
         case .cbr: return .cbr
+        case .zip: return .zip
         case .png: return .png
         case .jpg: return .jpg
         case .svg: return .svg
@@ -61,6 +62,7 @@ public enum LocationType {
 public enum FileType {
     case mp3
     case cbr
+    case zip
     case png
     case jpg
     case svg
@@ -70,7 +72,7 @@ public enum FileType {
     init(fileExtension: String) {
         switch fileExtension.lowercased() {
         case "mp3": self = .mp3
-        case "cbr": self = .cbr
+        case "zip": self = .zip
         case "png": self = .png
         case "jpg", "jpeg": self = .jpg
         case "svg": self = .svg
@@ -84,6 +86,7 @@ public enum FileTypeImage {
     case folder
     case mp3
     case cbr
+    case zip
     case png
     case jpg
     case svg
@@ -96,7 +99,7 @@ public enum FileTypeImage {
             return Image(systemName: "folder.fill")
         case .mp3:
             return Image(systemName: "music.note")
-        case .cbr:
+        case .cbr, .zip:
             return Image(systemName: "book.fill")
         case .png, .jpg, .svg:
             return Image(systemName: "photo")

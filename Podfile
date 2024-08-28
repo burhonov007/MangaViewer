@@ -7,5 +7,5 @@ target 'MangaViewer' do
 
   # Pods for MangaViewer
   pod 'lottie-ios'
-
+  pod 'Zip'
 end
