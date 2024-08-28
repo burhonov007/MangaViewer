@@ -9,48 +9,58 @@ import SwiftUI
 
 struct MyFilesView: View {
     @StateObject private var viewModel = FileManagerViewModel()
-    var items: [File] = FileManagerService.shared.fetchFilesAndFolders()
+    @State var items: [File]
     
     var body: some View {
-        List(items, id: \.self) { item in
-            if item.locationType == .folder { // Проверяем, является ли элемент директорией
-                NavigationLink(
-                    destination: MyFilesView(items: FileManagerService.shared.fetchContents(of: item.url))
-                ) {
-                    HStack {
-                        item.image
-                        VStack(alignment: .leading) {
-                            Text(item.url.lastPathComponent)
-                                .font(.headline)
-                            Text(item.url.absoluteString)
-                                .font(.subheadline)
-                                .lineLimit(1)
-                        }
-                    }
-                }
-            } else {
-                HStack {
-                    item.image
-                    VStack(alignment: .leading) {
-                        Text(item.url.lastPathComponent)
-                            .font(.headline)
-                        Text(item.url.absoluteString)
-                            .font(.subheadline)
-                            .lineLimit(1)
-                    }
-                }
-                .contextMenu {
-                    Button(action: {
-                        // Ваше действие
-                    }) {
-                        Label("Action", systemImage: "star")
-                    }
-                }
-            }
+        List(items) { item in
+            navigationLink(for: item)
         }
-
     }
 }
+
+
+
+@ViewBuilder
+func navigationLink(for item: File) -> some View {
+    if item.locationType == .folder {
+        NavigationLink(
+            destination: MyFilesView(items: FileManagerService.shared.fetchContents(of: item.url))
+        ) {
+            listItemView(for: item)
+        }
+    } else if item.isImage {
+        NavigationLink(
+            destination: ImageView(imageURL: item.url)
+        ) {
+            listItemView(for: item)
+        }
+        .navigationTitle("Просмотр")
+    } else {
+        listItemView(for: item)
+    }
+}
+
+
+func listItemView(for item: File) -> some View {
+    HStack {
+        item.image
+        VStack(alignment: .leading) {
+            Text(item.url.lastPathComponent)
+                .font(.headline)
+        }
+    }
+    .contextMenu {
+        Button(action: {
+            // Ваше действие
+        }) {
+            Label("Action", systemImage: "star")
+        }
+    }
+}
+
+
+
+
 
 //#Preview {
 //    MyFilesView()
@@ -58,15 +68,13 @@ struct MyFilesView: View {
 
 #Preview {
     NavigationView {
-        MyFilesView()
+        MyFilesView(items: FileManagerService.shared.fetchFilesAndFolders())
     }
 }
 
 
 class FileManagerViewModel: ObservableObject {
     @Published var filesAndFolders: [File] = FileManagerService.shared.fetchFilesAndFolders()
-    
-    @Published var filesFolders: [File] = FileManagerService.shared.createFakeFilesAndFolders()
     
 }
 
@@ -131,6 +139,24 @@ public enum FileTypeImage {
 }
 
 
+struct ImageView: View {
+    let imageURL: URL
+    
+    var body: some View {
+        ScrollView(.vertical) {
+            VStack {
+                if let uiImage = UIImage(contentsOfFile: imageURL.path) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    Text("Unable to load image")
+                }
+            }
+        }
+        
+    }
+}
 
 
 
@@ -143,6 +169,10 @@ struct File: Identifiable, Hashable {
     let url: URL
     let locationType: LocationType
     let fileType: FileType
+    var isImage: Bool {
+        let imageExtensions = ["jpg", "jpeg", "png", "gif", "tiff", "bmp", "heif"]
+        return imageExtensions.contains(url.pathExtension.lowercased())
+    }
     
     // Инициализатор для создания FileLocation на основе URL
     init(url: URL) {
@@ -241,14 +271,12 @@ class FileManagerService {
         }
     }
     
-    func createDirectory(named name: String) -> Bool {
+    func createDirectory(named name: String) {
         let directoryURL = documentsURL.appendingPathComponent(name)
         do {
             try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
-            return true
         } catch {
             print("Error creating directory: \(error)")
-            return false
         }
     }
     
@@ -263,15 +291,6 @@ class FileManagerService {
         }
     }
     
-    func fetchContents(of directoryURL: URL) -> [URL] {
-            do {
-                let contents = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                return contents
-            } catch {
-                print("Error fetching contents of directory: \(error)")
-                return []
-            }
-        }
     
     func fetchContents(of directoryURL: URL) -> [File] {
         do {
@@ -282,49 +301,24 @@ class FileManagerService {
             return []
         }
         
-      }
+    }
     
-    func createFakeFilesAndFolders() -> [File] {
-            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            
-            // Основные папки и файлы
-            let folder1URL = documentsURL.appendingPathComponent("Folder1")
-            let folder2URL = documentsURL.appendingPathComponent("Folder2")
-            let file1URL = documentsURL.appendingPathComponent("File1.mp3")
-            let file2URL = documentsURL.appendingPathComponent("File2.png")
-            let file3URL = documentsURL.appendingPathComponent("File3.cbr")
-            let file4URL = documentsURL.appendingPathComponent("File4.unknown") // Исправлено на 'unknown'
-            
-            // Файлы и папки внутри Folder2
-            let folder2SubFolderURL = folder2URL.appendingPathComponent("SubFolder")
-            let folder2File1URL = folder2URL.appendingPathComponent("File5.mp4")
-            let folder2File2URL = folder2URL.appendingPathComponent("File6.svg")
-            
-            // Создание директорий и файлов
-            do {
-                try fileManager.createDirectory(at: folder1URL, withIntermediateDirectories: true, attributes: nil)
-                try fileManager.createDirectory(at: folder2URL, withIntermediateDirectories: true, attributes: nil)
-                fileManager.createFile(atPath: file1URL.path, contents: "This is File 1".data(using: .utf8))
-                fileManager.createFile(atPath: file2URL.path, contents: "This is File 2".data(using: .utf8))
-                fileManager.createFile(atPath: file3URL.path, contents: "This is File 3".data(using: .utf8))
-                fileManager.createFile(atPath: file4URL.path, contents: "This is File 4".data(using: .utf8))
-                
-                // Создание содержимого для Folder2
-                try fileManager.createDirectory(at: folder2SubFolderURL, withIntermediateDirectories: true, attributes: nil)
-                fileManager.createFile(atPath: folder2File1URL.path, contents: "This is File 5".data(using: .utf8))
-                fileManager.createFile(atPath: folder2File2URL.path, contents: "This is File 6".data(using: .utf8))
-                
-            } catch {
-                print("Error creating fake files and folders: \(error)")
-            }
-            
-            return [
-                File(url: folder1URL),
-                File(url: folder2URL),
-                File(url: file1URL),
-                File(url: file2URL),
-                File(url: file3URL),
-                File(url: file4URL)
-            ]
+    func getApplicationDirectory(named name: String) -> URL? {
+        guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
         }
+        return documentsURL.appendingPathComponent(name)
+    }
+    
+    func createDirectoryIfNeeded(at url: URL) {
+        if !FileManager.default.fileExists(atPath: url.path) {
+            do {
+                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+                print("Directory created at \(url)")
+            } catch {
+                print("Failed to create directory: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }

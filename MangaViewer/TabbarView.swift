@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct TabbarView: View {
-    
+
+    init() {
+        setupApplicationDirectory()
+    }
 
     @State private var selectedTab = 0
     @State var alert = false
     
     @State var rowType: RowType = .bigRow
     @State var listType: ListType = .collection
+    
+    @State private var showFolderCreatorPicker = false
+    @State private var newFolderName: String = ""
     
     @State private var showDocumentPicker = false
     @State private var documentURL: URL?
@@ -34,7 +40,7 @@ struct TabbarView: View {
                 }
                 .tag(1)
             
-            MyFilesView()
+            MyFilesView(items: FileManagerService.shared.fetchFilesAndFolders())
                 .tabItem {
                     Label("Мой файлы", systemImage: "folder")
                 }
@@ -73,7 +79,14 @@ struct TabbarView: View {
                         Image(systemName: "trash")
                             .resizable()
                     }
+                } else if selectedTab == 2 {
+                    Button(action: {
+                        showFolderCreatorPicker = true
+                    }, label: {
+                        Image(systemName: "folder.fill.badge.plus").resizable()
+                    })
                 }
+                
             }
             
             ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -119,7 +132,27 @@ struct TabbarView: View {
                 copyFileToAppDirectory(from: url)
             }
         }
+        .alert("Enter your name", isPresented: $showFolderCreatorPicker) {
+                    TextField("Enter your name", text: $newFolderName)
+            Button("OK", action: submit)
+                } message: {
+                    Text("Xcode will print whatever you type.")
+                }
+           
         
+    }
+    
+    func submit() {
+        FileManagerService.shared.createDirectory(named: newFolderName)
+    }
+    
+    private func setupApplicationDirectory() {
+        let fileManager = FileManagerService.shared
+        let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "DefaultAppName"
+        
+        if let appDirectoryURL = fileManager.getApplicationDirectory(named: appName) {
+            fileManager.createDirectoryIfNeeded(at: appDirectoryURL)
+        }
     }
     
     private func getNavigationTitle(for index: Int) -> String {
