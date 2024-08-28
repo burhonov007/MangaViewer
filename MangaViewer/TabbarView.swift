@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TabbarView: View {
-
+    
     init() {
         setupApplicationDirectory()
     }
-
+    
     @State private var selectedTab = 0
     @State var alert = false
     
@@ -40,7 +40,7 @@ struct TabbarView: View {
                 }
                 .tag(1)
             
-            MyFilesView(items: FileManagerService.shared.fetchFilesAndFolders())
+            MyFilesView(items: FileManagerService.shared.fetchFilesAndFolders(), currentDirectoryURL: FileManagerService.shared.documentsURL)
                 .tabItem {
                     Label("Мой файлы", systemImage: "folder")
                 }
@@ -133,18 +133,17 @@ struct TabbarView: View {
             }
         }
         .alert("Enter your name", isPresented: $showFolderCreatorPicker) {
-                    TextField("Enter your name", text: $newFolderName)
-            Button("OK", action: submit)
-                } message: {
-                    Text("Xcode will print whatever you type.")
-                }
-           
+            TextField("Enter your name", text: $newFolderName)
+            Button("OK", action: {
+                FileManagerService.shared.createDirectory(named: newFolderName)
+            })
+        } message: {
+            Text("Xcode will print whatever you type.")
+        }
+        
         
     }
     
-    func submit() {
-        FileManagerService.shared.createDirectory(named: newFolderName)
-    }
     
     private func setupApplicationDirectory() {
         let fileManager = FileManagerService.shared
