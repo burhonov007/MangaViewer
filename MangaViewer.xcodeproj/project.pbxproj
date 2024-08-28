@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C6C02502C7DFB090023F1C0 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C6C024F2C7DFB090023F1C0 /* Loading.json */; };
+		1C758FC72C7EE9620001230E /* MyFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C758FC62C7EE9620001230E /* MyFilesView.swift */; };
 		1C98903B2C7DC04E009907BF /* MangaViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */; };
 		1C98903F2C7DC050009907BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C98903E2C7DC050009907BF /* Assets.xcassets */; };
 		1C9890422C7DC050009907BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9890412C7DC050009907BF /* Preview Assets.xcassets */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		1C6C024F2C7DFB090023F1C0 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
+		1C758FC42C7EE5370001230E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C758FC62C7EE9620001230E /* MyFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFilesView.swift; sourceTree = "<group>"; };
 		1C9890372C7DC04E009907BF /* MangaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaViewerApp.swift; sourceTree = "<group>"; };
 		1C98903E2C7DC050009907BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +74,14 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		1C758FC52C7EE94D0001230E /* MyFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1C758FC62C7EE9620001230E /* MyFilesView.swift */,
+			);
+			path = MyFiles;
+			sourceTree = "<group>";
+		};
 		1C923EA1C7D497D5BEDE3372 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,8 +112,10 @@
 		1C9890392C7DC04E009907BF /* MangaViewer */ = {
 			isa = PBXGroup;
 			children = (
+				1C758FC42C7EE5370001230E /* Info.plist */,
 				1C6C024E2C7DFB010023F1C0 /* Animation */,
 				1C9890542C7DDB6D009907BF /* Views */,
+				1C9890692C7DF74F009907BF /* LottieView.swift */,
 				1C98903A2C7DC04E009907BF /* MangaViewerApp.swift */,
 				1C9890482C7DC06C009907BF /* TabbarView.swift */,
 				1C98903E2C7DC050009907BF /* Assets.xcassets */,
@@ -127,7 +140,7 @@
 				1C9890572C7DDBB0009907BF /* Favorites */,
 				1C9890582C7DDBC0009907BF /* Settings */,
 				1C9890592C7DDBD3009907BF /* Viewer */,
-				1C9890692C7DF74F009907BF /* LottieView.swift */,
+				1C758FC52C7EE94D0001230E /* MyFiles */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +349,7 @@
 				1C98904D2C7DC2B4009907BF /* HistoryView.swift in Sources */,
 				1C98905C2C7DDBFC009907BF /* MangaCollectionCell.swift in Sources */,
 				1C9890632C7DE3F1009907BF /* MangaList.swift in Sources */,
+				1C758FC72C7EE9620001230E /* MyFilesView.swift in Sources */,
 				1C9890532C7DCD7A009907BF /* MangaViewer.swift in Sources */,
 				1C98904B2C7DC2AA009907BF /* MainView.swift in Sources */,
 				1C98903B2C7DC04E009907BF /* MangaViewerApp.swift in Sources */,
@@ -476,6 +490,8 @@
 				DEVELOPMENT_TEAM = 6FDK7GQU72;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MangaViewer/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +523,8 @@
 				DEVELOPMENT_TEAM = 6FDK7GQU72;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MangaViewer/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

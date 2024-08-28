@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUI
 
 struct TabbarView: View {
     
@@ -16,6 +15,9 @@ struct TabbarView: View {
     
     @State var rowType: RowType = .bigRow
     @State var listType: ListType = .collection
+    
+    @State private var showDocumentPicker = false
+    @State private var documentURL: URL?
     
     var body: some View {
         
@@ -32,17 +34,24 @@ struct TabbarView: View {
                 }
                 .tag(1)
             
+            MyFilesView()
+                .tabItem {
+                    Label("Мой файлы", systemImage: "folder")
+                }
+                .tag(2)
+            
+            
             FavoritesView()
                 .tabItem {
                     Label("Избранные", systemImage: "star")
                 }
-                .tag(2)
+                .tag(3)
             
             SettingsView()
                 .tabItem {
                     Label("Настройки", systemImage: "gear")
                 }
-                .tag(3)
+                .tag(4)
         }
         .navigationTitle(getNavigationTitle(for: selectedTab))
         .navigationBarTitleDisplayMode(.inline)
@@ -75,6 +84,13 @@ struct TabbarView: View {
                         Image(systemName: "rectangle.stack")
                             .resizable()
                     })
+                } else if selectedTab == 2 {
+                    Button(action: {
+                        showDocumentPicker = true
+                    }, label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                    })
                 }
             }
         }
@@ -97,8 +113,12 @@ struct TabbarView: View {
                 ]
             )
         }
-        
-        
+        .sheet(isPresented: $showDocumentPicker) {
+            DocumentPicker { url in
+                documentURL = url
+                copyFileToAppDirectory(from: url)
+            }
+        }
         
     }
     
@@ -106,9 +126,24 @@ struct TabbarView: View {
         switch index {
         case 0: return "Главная"
         case 1: return "История"
-        case 2: return "Избранные"
-        case 3: return "Настройки"
+        case 2: return "Эспортированные"
+        case 3: return "Избранные"
+        case 4: return "Настройки"
         default: return ""
+        }
+    }
+    
+    
+    func copyFileToAppDirectory(from url: URL) {
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsURL.appendingPathComponent(url.lastPathComponent)
+        
+        do {
+            try fileManager.copyItem(at: url, to: destinationURL)
+            print("File copied to: \(destinationURL)")
+        } catch {
+            print("Error copying file: \(error)")
         }
     }
     
@@ -116,4 +151,44 @@ struct TabbarView: View {
 
 #Preview {
     TabbarView()
+}
+
+
+
+
+import SwiftUI
+import UIKit
+import UniformTypeIdentifiers
+
+struct DocumentPicker: UIViewControllerRepresentable {
+    var onPick: (URL) -> Void
+    
+    func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.item], asCopy: true)
+        documentPicker.delegate = context.coordinator
+        return documentPicker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(onPick: onPick)
+    }
+    
+    class Coordinator: NSObject, UIDocumentPickerDelegate {
+        var onPick: (URL) -> Void
+        
+        init(onPick: @escaping (URL) -> Void) {
+            self.onPick = onPick
+        }
+        
+        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+            guard let selectedURL = urls.first else { return }
+            onPick(selectedURL)
+        }
+        
+        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+            print("Document picker was cancelled")
+        }
+    }
 }
