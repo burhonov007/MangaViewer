@@ -106,14 +106,15 @@ class FileManagerService {
     
     func unZip(at url: URL) {
         do {
-            guard let appDirectoryURL = getApplicationDirectory(named: url.deletingPathExtension().lastPathComponent.removingPercentEncoding ?? url.lastPathComponent) else {
+            guard let appDirectoryURL = getApplicationDirectory(named: url.deletingPathExtension().lastPathComponent.removingPercentEncoding ?? url.lastPathComponent),
+                  let url = URL(string: appDirectoryURL.lastPathComponent + ".cbr") else {
                 return
             }
                 
-            createDirectoryIfNeeded(at: appDirectoryURL)
+            createDirectoryIfNeeded(at: url)
             
             print("\(appDirectoryURL)")
-            try Zip.unzipFile(url, destination: appDirectoryURL, overwrite: true, password: nil) { progress in
+            try Zip.unzipFile(url, destination: url, overwrite: true, password: nil) { progress in
                 print(progress)
             } fileOutputHandler: { unzippedFile in
                 print("\(unzippedFile)")

@@ -76,7 +76,9 @@ struct MyFilesView: View {
                 listItemView(for: item)
             }
             .navigationTitle("Просмотр")
-        } else {
+        } else if item.fileType == .cbr {
+            
+        }  else {
             listItemView(for: item)
         }
     }
